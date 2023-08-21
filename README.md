@@ -1,21 +1,29 @@
-## Run Hadoop v3.3.1 within Docker Containers
+## Run Hadoop and Spark within Docker Containers
 
 `环境：MacOS Ventura 13.5`
 
 `机型：Mac mini (M1, 2020)`
 
-##### 1. build Dockerfile
+#### 1. Download resource files
+- [hadoop-3.3.1-aarch64](https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1-aarch64.tar.gz)
+- [JDK1.8-aarch64](https://gitee.com/Bric666/java/attach_files/803375/download/jdk-8u301-linux-aarch64.tar.gz) 
+- [scala-2.12.14](https://downloads.lightbend.com/scala/2.12.14/scala-2.12.14.tgz) 
+- [spark-3.2.1-bin-hadoop3.2](https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz)
+
+Move `hadoop-3.3.1-aarch64.tar.gz`、`jdk-8u301-linux-aarch64.tar.gz`、`scala-2.12.14.tgz` and `spark-3.2.1-bin-hadoop3.2.tgz` to `resources` folder
+
+##### 2. build Dockerfile
 ```
 docker build -f Dockerfile -t puppets/hadoop:1.0 .
 ```
 
-##### 2. create hadoop network
+##### 3. create hadoop network
 
 ```
 sudo docker network create --driver=bridge hadoop
 ```
 
-##### 3. start container
+##### 4. start container
 
 ```
 sudo ./start-container.sh
@@ -29,7 +37,7 @@ start hadoop-slave1 container...
 start hadoop-slave2 container...
 ```
 
-##### 4. start hadoop
+##### 5. start hadoop
 
 ```
 docker exec -it hadoop-master bash
@@ -41,7 +49,7 @@ docker exec -it hadoop-slave2 bash
 ./start-hadoop.sh
 ```
 
-##### 5. run wordcount
+##### 6. run wordcount
 在master节点运行任务
 ```
 ./run-wordcount.sh 3.3.1
