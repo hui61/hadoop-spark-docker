@@ -2,19 +2,20 @@
 
 `环境：MacOS Ventura 13.5`
 
-`机型：Mac mini (M1, 2020)`
+`机型：MacBook Pro (M1, 2021)`
 
 #### 1. Download resource files
 - [hadoop-3.3.1-aarch64](https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1-aarch64.tar.gz)
 - [JDK1.8-aarch64](https://gitee.com/Bric666/java/attach_files/803375/download/jdk-8u301-linux-aarch64.tar.gz) 
 - [scala-2.12.14](https://downloads.lightbend.com/scala/2.12.14/scala-2.12.14.tgz) 
 - [spark-3.2.1-bin-hadoop3.2](https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz)
+- [pyspark-3.4.1](https://files.pythonhosted.org/packages/0c/66/3cf748ba7cd7c6a4a46ffcc8d062f11ddc24b786c5b82936c857dc13b7bd/pyspark-3.4.1.tar.gz)
 
-Move `hadoop-3.3.1-aarch64.tar.gz`、`jdk-8u301-linux-aarch64.tar.gz`、`scala-2.12.14.tgz` and `spark-3.2.1-bin-hadoop3.2.tgz` to `resources` folder
+Move `hadoop-3.3.1-aarch64.tar.gz`、`jdk-8u301-linux-aarch64.tar.gz`、`scala-2.12.14.tgz`、`spark-3.2.1-bin-hadoop3.2.tgz` and `pyspark-3.4.1.tar.gz` to `resources` folder
 
 ##### 2. build Dockerfile
 ```
-docker build -f Dockerfile -t puppets/hadoop:1.0 .
+docker build -f Dockerfile -t puppets/hadoop:1.1 .
 ```
 
 ##### 3. create hadoop network
