@@ -9,7 +9,7 @@ sudo docker run -itd \
 				        -p 4040:4040 \
                 --name hadoop-master \
                 --hostname hadoop-master \
-                puppets/hadoop:1.1 &> /dev/null
+                puppets/hadoop:1.1
 
 
 echo "start hadoop-slave1 container..."
@@ -17,7 +17,7 @@ sudo docker run -itd \
         --net=hadoop \
         --name hadoop-slave1 \
         --hostname hadoop-slave1 \
-        puppets/hadoop:1.1 &> /dev/null
+        puppets/hadoop:1.1
 
 
 
@@ -27,4 +27,4 @@ sudo docker run -itd \
         --net=hadoop \
         --name hadoop-slave2 \
         --hostname hadoop-slave2 \
-        puppets/hadoop:1.1 &> /dev/null
+        puppets/hadoop:1.1
