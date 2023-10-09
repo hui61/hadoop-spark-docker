@@ -1,4 +1,4 @@
-## Run Hadoop and Spark within Docker Containers
+## Run Hadoop Spark and Hive within Docker Containers
 
 `环境：MacOS Ventura 13.5`
 
@@ -10,6 +10,8 @@
 - [scala-2.12.14](https://downloads.lightbend.com/scala/2.12.14/scala-2.12.14.tgz) 
 - [spark-3.2.1-bin-hadoop3.2](https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz)
 - [pyspark-3.4.1](https://files.pythonhosted.org/packages/0c/66/3cf748ba7cd7c6a4a46ffcc8d062f11ddc24b786c5b82936c857dc13b7bd/pyspark-3.4.1.tar.gz)
+- [mysql-connector-java-8.0.28](https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar)
+- [hive-3.1.3-bin](https://downloads.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz)
 
 Move `hadoop-3.3.1-aarch64.tar.gz`、`jdk-8u301-linux-aarch64.tar.gz`、`scala-2.12.14.tgz`、`spark-3.2.1-bin-hadoop3.2.tgz` and `pyspark-3.4.1.tar.gz` to `resources` folder
 
@@ -50,7 +52,12 @@ docker exec -it hadoop-slave2 bash
 ./start-hadoop.sh
 ```
 
-##### 6. run wordcount
+##### 6. update mysql password
+```
+./update-mysql-password.sh
+```
+
+##### 7. run wordcount
 在master节点运行任务
 ```
 ./run-wordcount.sh 3.3.1
@@ -71,7 +78,12 @@ Hadoop    1
 Hello    2
 ```
 
-##### 8. WebUI
+##### 8. start hive
+```
+schematool -initSchema -dbType mysql
+```
+
+##### 9. WebUI
 - [HDFS UI](http://localhost:9870/)
 ![img1.png](images%2Fimg1.png)
 - [SPARK UI](http://localhost:8088/)
